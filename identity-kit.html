@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identity Kit — Sheikh Umar Younas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --near-black:#14181C;
+    --near-white:#F5F4F0;
+    --main:#1F4B4C;
+    --accent:#C4622D;
+    --line: rgba(20,24,28,0.12);
+    --heading-font:'Fraunces', serif;
+    --body-font:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--near-white);
+    color:var(--near-black);
+    font-family:var(--body-font);
+    line-height:1.5;
+    padding: 64px 24px 100px;
+  }
+  .wrap{max-width:920px;margin:0 auto;}
+
+  .kicker{
+    font-family:var(--body-font);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--main);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  h1.page-title{
+    font-family:var(--heading-font);
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(36px,6vw,58px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    margin:0 0 8px;
+  }
+  .subtitle{
+    font-size:16px;
+    color:rgba(20,24,28,0.62);
+    max-width:52ch;
+    margin:0 0 56px;
+  }
+
+  section{margin-bottom:64px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:28px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:14px;
+  }
+  .section-num{
+    font-family:var(--heading-font);
+    font-size:14px;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .section-title{
+    font-family:var(--heading-font);
+    font-size:22px;
+    font-weight:600;
+    margin:0;
+  }
+
+  /* TYPE */
+  .type-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+  @media (max-width:640px){ .type-row{grid-template-columns:1fr;} }
+  .type-card{
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:28px;
+    background:#fff;
+  }
+  .type-role{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:rgba(20,24,28,0.5);
+    margin-bottom:10px;
+    font-weight:600;
+  }
+  .type-name{
+    font-family:var(--heading-font);
+    font-weight:600;
+    font-size:26px;
+    margin:0 0 4px;
+  }
+  .type-meta{
+    font-size:13px;
+    color:rgba(20,24,28,0.55);
+    margin-bottom:20px;
+  }
+  .type-sample-h{
+    font-family:var(--heading-font);
+    font-weight:600;
+    font-size:34px;
+    line-height:1.1;
+    margin:0 0 6px;
+  }
+  .type-sample-b{
+    font-family:var(--body-font);
+    font-size:16px;
+    color:rgba(20,24,28,0.78);
+  }
+
+  /* PALETTE */
+  .palette-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+  }
+  @media (max-width:640px){ .palette-grid{grid-template-columns:repeat(2,1fr);} }
+  .swatch{
+    border-radius:2px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:#fff;
+  }
+  .swatch-color{ height:100px; }
+  .swatch-info{ padding:14px 14px 16px; }
+  .swatch-role{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:rgba(20,24,28,0.5);
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .swatch-hex{
+    font-family:var(--body-font);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.02em;
+  }
+
+  /* LOGO */
+  .logo-row{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:32px;
+    align-items:stretch;
+  }
+  @media (max-width:640px){ .logo-row{grid-template-columns:1fr;} }
+  .logo-tile{
+    border:1px solid var(--line);
+    background:var(--main);
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+  }
+  .logo-tile.dark{ background:var(--near-black); }
+  .logo-tile.light{ background:#fff; }
+  .logo-set{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    gap:16px;
+  }
+  .wordmark-tile{
+    grid-column:1 / -1;
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    padding:28px 32px;
+  }
+  .wordmark{
+    font-family:var(--heading-font);
+    font-weight:600;
+    font-size:28px;
+    letter-spacing:-0.01em;
+    color:var(--near-black);
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .favicon-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:rgba(20,24,28,0.5);
+    font-weight:600;
+    margin-top:10px;
+    text-align:center;
+  }
+  .favicon-tile{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:2px;
+    padding:20px;
+  }
+
+  /* STYLE NOTE */
+  .note-card{
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent);
+    background:#fff;
+    padding:26px 30px;
+    border-radius:2px;
+  }
+  .note-text{
+    font-family:var(--heading-font);
+    font-size:19px;
+    font-weight:500;
+    line-height:1.5;
+    margin:0 0 14px;
+    color:var(--near-black);
+  }
+  .note-meta{
+    font-size:13px;
+    color:rgba(20,24,28,0.55);
+    font-family:var(--body-font);
+  }
+  .note-meta code{
+    background:var(--near-white);
+    padding:2px 6px;
+    border-radius:3px;
+    font-size:12.5px;
+  }
+
+  footer{
+    margin-top:80px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:rgba(20,24,28,0.45);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Week 03 · Identity Kit</div>
+  <h1 class="page-title">One page, four decisions,<br>every build inherits them.</h1>
+  <p class="subtitle">Identity for <strong>Sheikh Umar Younas</strong>, Computer Scientist. Fonts, palette, mark, and mood stay fixed across every project page and case study.</p>
+
+  <!-- TYPE -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Type</h2>
+    </div>
+    <div class="type-row">
+      <div class="type-card">
+        <div class="type-role">Heading</div>
+        <p class="type-name">Fraunces</p>
+        <p class="type-meta">Free · Google Fonts · Weight 600</p>
+        <p class="type-sample-h">Umar Younas</p>
+        <p class="type-sample-b">A soft serif with a warm, hand-finished edge — enough personality to carry a name, restrained enough not to compete with the work.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-role">Body</div>
+        <p class="type-name">Inter</p>
+        <p class="type-meta">Free · Google Fonts · Weight 400 / 500 / 600</p>
+        <p class="type-sample-h" style="font-family:var(--body-font); font-size:20px; font-weight:600;">Case studies, captions, labels.</p>
+        <p class="type-sample-b">A neutral, highly legible grotesk for body copy, UI labels, and long-form case study text at any size.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PALETTE -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Palette</h2>
+    </div>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--main);"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Main</div>
+          <div class="swatch-hex">#1F4B4C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--near-black);"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Text</div>
+          <div class="swatch-hex">#14181C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--near-white); border-bottom:1px solid var(--line);"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Background</div>
+          <div class="swatch-hex">#F5F4F0</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--accent);"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Accent</div>
+          <div class="swatch-hex">#C4622D</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Logo &amp; favicon</h2>
+    </div>
+    <div class="logo-row">
+      <div>
+        <div class="logo-tile dark">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="58" fill="var(--near-white)"/>
+            <line x1="10" y1="76" x2="110" y2="52" stroke="var(--accent)" stroke-width="2.5"/>
+            <text x="60" y="58" text-anchor="middle" font-family="Fraunces, serif" font-weight="600" font-size="42" fill="var(--near-black)">UY</text>
+          </svg>
+        </div>
+        <div class="favicon-label">Monogram · 120×120</div>
+      </div>
+      <div class="logo-set">
+        <div class="wordmark-tile" style="grid-column:1/-1;">
+          <div class="wordmark">
+            <svg width="34" height="34" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="58" fill="var(--main)"/>
+              <line x1="10" y1="76" x2="110" y2="52" stroke="var(--accent)" stroke-width="3"/>
+              <text x="60" y="58" text-anchor="middle" font-family="Fraunces, serif" font-weight="600" font-size="42" fill="var(--near-white)">UY</text>
+            </svg>
+            Umar Younas
+          </div>
+        </div>
+        <div class="favicon-tile">
+          <svg width="16" height="16" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="58" fill="var(--main)"/>
+            <line x1="10" y1="76" x2="110" y2="52" stroke="var(--accent)" stroke-width="4"/>
+            <text x="60" y="58" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="46" fill="var(--near-white)">UY</text>
+          </svg>
+          <div class="favicon-label">16×16</div>
+        </div>
+        <div class="favicon-tile">
+          <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="58" fill="var(--main)"/>
+            <line x1="10" y1="76" x2="110" y2="52" stroke="var(--accent)" stroke-width="3"/>
+            <text x="60" y="58" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="46" fill="var(--near-white)">UY</text>
+          </svg>
+          <div class="favicon-label">32×32</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STYLE NOTE -->
+  <section style="margin-bottom:0;">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Style note</h2>
+    </div>
+    <div class="note-card">
+      <p class="note-text">Fraunces for headings, Inter for body, on near-white #F5F4F0 with near-black #14181C text, pine #1F4B4C as the main color and a single clay accent #C4622D for links and small marks. The mood is quiet and considered — a calm studio backdrop that lets the work, not the frame, hold the attention.</p>
+      <div class="note-meta">Paste this into your Claude Project's custom instructions so every new page or case study inherits it: <code>Fraunces/Inter · #1F4B4C · #14181C · #F5F4F0 · #C4622D</code></div>
+    </div>
+  </section>
+
+  <footer>Identity Kit for Sheikh Umar Younas — Computer Scientist. Fonts, palette, and mark are locked; reuse them across every portfolio page and case study.</footer>
+</div>
+</body>
+</html>

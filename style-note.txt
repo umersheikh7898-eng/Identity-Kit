@@ -1,0 +1,9 @@
+STYLE NOTE — Sheikh Umar Younas, Computer Scientist
+
+Fonts: Fraunces (heading) + Inter (body)
+Palette: Main #1F4B4C · Text #14181C · Background #F5F4F0 · Accent #C4622D
+
+Fraunces for headings, Inter for body, on near-white #F5F4F0 with near-black #14181C text,
+pine #1F4B4C as the main color and a single clay accent #C4622D for links and small marks.
+The mood is quiet and considered — a calm studio backdrop that lets the work, not the frame,
+hold the attention.
